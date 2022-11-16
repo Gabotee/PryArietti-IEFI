@@ -55,13 +55,59 @@ namespace PryAriettiIEFI
 
         private void cmdListar_Click(object sender, EventArgs e)
         {
+            
             int NumeroActividad = Convert.ToInt32(lstActividad.SelectedValue);
             ClaseCliente Listar = new ClaseCliente();
 
             Listar.ListarClienteActividad(dgvMostrar, NumeroActividad);
 
             txtTotalSaldo.Text = Listar.Saldo.ToString();
+            txtMayorPromedio.Text = Listar.Mayor.ToString();
+            txtMenorPromedio.Text = Listar.Menor.ToString();
+
+            cmdReporte.Enabled = true;
+            cmdImprimir.Enabled = true;
+
 
         }
+
+        private void cmdReporte_Click(object sender, EventArgs e)
+        {
+            ClaseCliente Reporte = new ClaseCliente();
+            Reporte.GenerarReporte(dgvMostrar);
+            MessageBox.Show("Reporte Generado");
+        }
+
+        private void lstActividad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstActividad.SelectedIndex == -1)
+            {
+                cmdListar.Enabled = false;
+            }
+            else
+            {
+                cmdListar.Enabled = true;
+            }
+        }
+
+        private void cmdImprimir_Click(object sender, EventArgs e)
+        {
+            ImpVentana.ShowDialog();
+            // Le paso La impresora que se selecciono.. 
+            ImpDocumento.PrinterSettings = ImpVentana.PrinterSettings;
+            // Indico que el documento se debe imprimir 
+            ImpDocumento.Print();
+            MessageBox.Show("Datos Impresos");
+        }
+
+        private void ImpDocumento_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+            ClaseCliente Listado = new ClaseCliente();
+            Listado.Imprimir(e);
+
+        }
+
+        
     }
 }

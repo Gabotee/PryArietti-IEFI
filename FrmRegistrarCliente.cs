@@ -85,7 +85,7 @@ namespace PryAriettiIEFI
                     Registrar.Saldo = Convert.ToInt32(txtSaldo.Text);
                     Registrar.AgregarCliente();
 
-                    MessageBox.Show("Cliente Registrado");
+                    MessageBox.Show("Cliente Registrado con exito");
 
                     Limpiar();
                 }

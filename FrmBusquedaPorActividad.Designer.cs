@@ -34,10 +34,10 @@
             this.cmdListar = new System.Windows.Forms.Button();
             this.lstActividad = new System.Windows.Forms.ComboBox();
             this.dgvMostrar = new System.Windows.Forms.DataGridView();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDatos = new System.Windows.Forms.Label();
             this.lblMayorPromedio = new System.Windows.Forms.Label();
             this.txtMayorPromedio = new System.Windows.Forms.TextBox();
@@ -49,6 +49,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.cmdReporte = new System.Windows.Forms.Button();
+            this.cmdImprimir = new System.Windows.Forms.Button();
+            this.ImpVentana = new System.Windows.Forms.PrintDialog();
+            this.ImpDocumento = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,6 +102,7 @@
             this.lstActividad.Name = "lstActividad";
             this.lstActividad.Size = new System.Drawing.Size(198, 21);
             this.lstActividad.TabIndex = 21;
+            this.lstActividad.SelectedIndexChanged += new System.EventHandler(this.lstActividad_SelectedIndexChanged);
             // 
             // dgvMostrar
             // 
@@ -105,28 +110,28 @@
             this.dgvMostrar.AllowUserToDeleteRows = false;
             this.dgvMostrar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMostrar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCodigo,
-            this.ColumnNombre_Apellido,
+            this.DNI,
+            this.Nombre_Apellido,
             this.Direccion,
-            this.Column1});
+            this.Saldo});
             this.dgvMostrar.Location = new System.Drawing.Point(220, 31);
             this.dgvMostrar.Name = "dgvMostrar";
             this.dgvMostrar.ReadOnly = true;
             this.dgvMostrar.Size = new System.Drawing.Size(543, 266);
             this.dgvMostrar.TabIndex = 20;
             // 
-            // ColumnCodigo
+            // DNI
             // 
-            this.ColumnCodigo.HeaderText = "DNI";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            this.ColumnCodigo.ReadOnly = true;
+            this.DNI.HeaderText = "DNI";
+            this.DNI.Name = "DNI";
+            this.DNI.ReadOnly = true;
             // 
-            // ColumnNombre_Apellido
+            // Nombre_Apellido
             // 
-            this.ColumnNombre_Apellido.HeaderText = "Nombre y Apellido";
-            this.ColumnNombre_Apellido.Name = "ColumnNombre_Apellido";
-            this.ColumnNombre_Apellido.ReadOnly = true;
-            this.ColumnNombre_Apellido.Width = 200;
+            this.Nombre_Apellido.HeaderText = "Nombre y Apellido";
+            this.Nombre_Apellido.Name = "Nombre_Apellido";
+            this.Nombre_Apellido.ReadOnly = true;
+            this.Nombre_Apellido.Width = 200;
             // 
             // Direccion
             // 
@@ -134,11 +139,11 @@
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
-            // Column1
+            // Saldo
             // 
-            this.Column1.HeaderText = "Saldo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.Saldo.HeaderText = "Saldo";
+            this.Saldo.Name = "Saldo";
+            this.Saldo.ReadOnly = true;
             // 
             // lblDatos
             // 
@@ -156,9 +161,9 @@
             this.lblMayorPromedio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMayorPromedio.Location = new System.Drawing.Point(9, 225);
             this.lblMayorPromedio.Name = "lblMayorPromedio";
-            this.lblMayorPromedio.Size = new System.Drawing.Size(125, 16);
+            this.lblMayorPromedio.Size = new System.Drawing.Size(54, 16);
             this.lblMayorPromedio.TabIndex = 25;
-            this.lblMayorPromedio.Text = "Mayor Promedio ";
+            this.lblMayorPromedio.Text = "Mayor ";
             // 
             // txtMayorPromedio
             // 
@@ -182,9 +187,9 @@
             this.lblMenorPromedio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMenorPromedio.Location = new System.Drawing.Point(8, 258);
             this.lblMenorPromedio.Name = "lblMenorPromedio";
-            this.lblMenorPromedio.Size = new System.Drawing.Size(121, 16);
+            this.lblMenorPromedio.Size = new System.Drawing.Size(54, 16);
             this.lblMenorPromedio.TabIndex = 27;
-            this.lblMenorPromedio.Text = "Menor Promedio";
+            this.lblMenorPromedio.Text = "Menor ";
             // 
             // txtTotalSaldo
             // 
@@ -254,11 +259,43 @@
             this.lblMensaje.TabIndex = 15;
             this.lblMensaje.Text = "Porfavor seleccione una \r\nActivadad.\r\n";
             // 
+            // cmdReporte
+            // 
+            this.cmdReporte.Enabled = false;
+            this.cmdReporte.Location = new System.Drawing.Point(567, 303);
+            this.cmdReporte.Name = "cmdReporte";
+            this.cmdReporte.Size = new System.Drawing.Size(95, 27);
+            this.cmdReporte.TabIndex = 32;
+            this.cmdReporte.Text = "Generar Reporte";
+            this.cmdReporte.UseVisualStyleBackColor = true;
+            this.cmdReporte.Click += new System.EventHandler(this.cmdReporte_Click);
+            // 
+            // cmdImprimir
+            // 
+            this.cmdImprimir.Enabled = false;
+            this.cmdImprimir.Location = new System.Drawing.Point(466, 303);
+            this.cmdImprimir.Name = "cmdImprimir";
+            this.cmdImprimir.Size = new System.Drawing.Size(95, 27);
+            this.cmdImprimir.TabIndex = 33;
+            this.cmdImprimir.Text = "Imprimir";
+            this.cmdImprimir.UseVisualStyleBackColor = true;
+            this.cmdImprimir.Click += new System.EventHandler(this.cmdImprimir_Click);
+            // 
+            // ImpVentana
+            // 
+            this.ImpVentana.UseEXDialog = true;
+            // 
+            // ImpDocumento
+            // 
+            this.ImpDocumento.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.ImpDocumento_PrintPage);
+            // 
             // FrmBusquedaPorActividad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 358);
+            this.Controls.Add(this.cmdImprimir);
+            this.Controls.Add(this.cmdReporte);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SsPorActividad);
             this.Controls.Add(this.cmdListar);
@@ -296,9 +333,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblMensaje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre_Apellido;
+        private System.Windows.Forms.Button cmdReporte;
+        private System.Windows.Forms.Button cmdImprimir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Saldo;
+        private System.Windows.Forms.PrintDialog ImpVentana;
+        private System.Drawing.Printing.PrintDocument ImpDocumento;
     }
 }

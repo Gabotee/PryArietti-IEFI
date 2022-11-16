@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing.Printing;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using System.Drawing;
+
 
 namespace PryAriettiIEFI
 {
@@ -34,6 +34,8 @@ namespace PryAriettiIEFI
         private int Sal;
         private int Cli;
         private int Prom;
+        private int May;
+        private int Men;
 
         public string NombreCliente
         {
@@ -75,6 +77,18 @@ namespace PryAriettiIEFI
         {
             get { return Prom; }
             set { Prom = value; }
+        }
+
+        public int Mayor
+        {
+            get { return May; }
+            set { May = value; }
+        }
+
+        public int Menor
+        {
+            get {return Men; }
+            set { Men = value; }
         }
 
 
@@ -236,7 +250,7 @@ namespace PryAriettiIEFI
                 QueQuieroTraerDeLaBD = new OleDbCommand();
                 QueQuieroTraerDeLaBD.Connection = ConexionBD;
                 QueQuieroTraerDeLaBD.CommandType = System.Data.CommandType.Text;
-                // Le paso la tabla 
+                // Le paso la instruccion  
                 QueQuieroTraerDeLaBD.CommandText = EliminarCliente;
                 // Ejecuta la instuccion 
                 QueQuieroTraerDeLaBD.ExecuteNonQuery();
@@ -268,7 +282,7 @@ namespace PryAriettiIEFI
             QueQuieroTraerDeLaBD = new OleDbCommand();
             QueQuieroTraerDeLaBD.Connection = ConexionBD;
             QueQuieroTraerDeLaBD.CommandType = System.Data.CommandType.Text;
-            // Le paso la tabla 
+            // Le paso la instruccion 
             QueQuieroTraerDeLaBD.CommandText = ModificarCliente;
             // Ejecuta la instuccion 
             QueQuieroTraerDeLaBD.ExecuteNonQuery();
@@ -366,7 +380,7 @@ namespace PryAriettiIEFI
             // Ejecuta la instuccion 
             OleDbDataReader Leer = QueQuieroTraerDeLaBD.ExecuteReader();
             DgvListarClientes.Rows.Clear();
-
+            
 
             if (Leer.HasRows)
             {
@@ -376,8 +390,109 @@ namespace PryAriettiIEFI
                     {
                         DgvListarClientes.Rows.Add(Leer.GetString(0), Leer.GetString(1), Leer.GetString(2), Leer.GetInt32(5));
                         Saldo = Saldo + Leer.GetInt32(5);
+
+                        if (Leer.GetInt32(5) > Mayor)
+                        {
+                            Mayor = Leer.GetInt32(5);
+                        }
+
+                        if (Leer.GetInt32(5) < Menor)
+                        {
+                            Menor = Leer.GetInt32(5);
+                        }
+
                     }
 
+                }
+            }
+
+            ConexionBD.Close();
+        }
+
+        public void GenerarReporte(DataGridView DgvMostrar)
+        {
+            // Creo un objeto de tipo Aplicacion de Microsoft Office 
+            Microsoft.Office.Interop.Excel.Application ExportarDatos = new Microsoft.Office.Interop.Excel.Application();
+            // Creo una hoja de trabajo en excel 
+            ExportarDatos.Application.Workbooks.Add(true);
+
+            int IndiceColumna = 0;
+
+            // Recorro las columnas de la grilla 
+            foreach (DataGridViewColumn columna in DgvMostrar.Columns)
+            {
+                IndiceColumna++;
+                // Le paso el Nombres de las columnas 
+                ExportarDatos.Cells[1, IndiceColumna] = columna.Name;
+            }
+
+            int IndiceFila = 0;
+
+            //Recorro las filas de la grilla 
+            foreach (DataGridViewRow fila in DgvMostrar.Rows)
+            {
+                IndiceFila++;
+                // Una vez que termina de leer las filas.. inicia desde cero, para cambiar de columna 
+                IndiceColumna = 0;
+                foreach (DataGridViewColumn columna in DgvMostrar.Columns)
+                {
+                    IndiceColumna++;
+                    ExportarDatos.Cells[IndiceFila + 1, IndiceColumna] = fila.Cells[columna.Name].Value;
+                }
+            }
+
+            //Muestra el Archivo en Excel 
+            ExportarDatos.Visible = true;
+        }
+
+        public void Imprimir(PrintPageEventArgs Reporte)
+        {
+            // Creacion de Objeto Font Para poder Elejir un tipo de letra 
+            System.Drawing.Font TituloPrincipal = new System.Drawing.Font("Arial", 20);
+            System.Drawing.Font SubTitulo = new System.Drawing.Font("Arial", 15);
+            System.Drawing.Font TipoLetra = new System.Drawing.Font("Arial", 10);
+
+            // Le pongo los titulos.. 
+            Reporte.Graphics.DrawString("Listado de Clientes", TituloPrincipal, Brushes.Black, 100,100);
+            Reporte.Graphics.DrawString("DNI", SubTitulo, Brushes.Black, 100, 170);
+            Reporte.Graphics.DrawString("Nombres", SubTitulo, Brushes.Black, 200, 170);
+            Reporte.Graphics.DrawString("Saldo", SubTitulo, Brushes.Black, 300, 170);
+
+
+            int Linea = 215;
+
+            //Me conecto a la base de datos 
+            ConexionBD = new OleDbConnection();
+            ConexionBD.ConnectionString = RutaBaseDeDatos;
+            ConexionBD.Open();
+
+            // Le paso la conexion 
+            QueQuieroTraerDeLaBD = new OleDbCommand();
+            QueQuieroTraerDeLaBD.Connection = ConexionBD;
+            QueQuieroTraerDeLaBD.CommandType = System.Data.CommandType.TableDirect;
+            // Le paso la tabla 
+            QueQuieroTraerDeLaBD.CommandText = TablaGIMNASIO;
+
+            OleDbDataAdapter Adaptador = new OleDbDataAdapter(QueQuieroTraerDeLaBD);
+
+            //Creo objeto del dataset 
+            DataSet Ds = new DataSet();
+
+            // Agrego Filas 
+            Adaptador.Fill(Ds, TablaGIMNASIO);
+
+            //Pregunta si la tabla tiene filas 
+            if (Ds.Tables[TablaGIMNASIO].Rows.Count > 0)
+            {   
+                //Le paso las filas 
+                foreach  (DataRow Fila in Ds.Tables[TablaGIMNASIO].Rows)
+                {
+                    // Imprimo Los campos elegidos de la BD
+                    Reporte.Graphics.DrawString(Fila["Dni Socio"].ToString(),TipoLetra,Brushes.Black,100,Linea);
+                    Reporte.Graphics.DrawString(Fila["Nombre"].ToString(), TipoLetra, Brushes.Black, 200,Linea);
+                    Reporte.Graphics.DrawString(Fila["Saldo"].ToString(), TipoLetra, Brushes.Black, 300, Linea);
+                    //Incremento la variable Linea para que cuando se impriman los datos Salgan con espacios en la Hoja.
+                    Linea = Linea + 25;
                 }
             }
 

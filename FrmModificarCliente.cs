@@ -52,6 +52,11 @@ namespace PryAriettiIEFI
 
             if (txtNombre.Text == "" | txtDireccion.Text == "" | lstBarrio.Text == "" | lstActividad.Text == "" | txtSaldo.Text == "")
             {
+                MessageBox.Show("Asegurese de que todos los campos contengan Datos");
+            }
+            else
+            {
+              
                 ClaseCliente cliente = new ClaseCliente();
 
                 cliente.NombreCliente = txtNombre.Text;
@@ -65,10 +70,6 @@ namespace PryAriettiIEFI
                 MessageBox.Show("Datos Modificados");
 
                 Limpiar();
-            }
-            else
-            {
-                MessageBox.Show("Asegurese de que todos los campos contengan Datos");
             }
 
 
