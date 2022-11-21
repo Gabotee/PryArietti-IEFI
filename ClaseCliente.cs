@@ -37,6 +37,8 @@ namespace PryAriettiIEFI
         private int May;
         private int Men;
 
+
+        // Toma el Valor de la variable.. y la muestra. 
         public string NombreCliente
         {
             get { return Nom_Apellido; }
@@ -143,7 +145,6 @@ namespace PryAriettiIEFI
 
         }
 
-
         public void BuscarPorNombre(string Nombre)
         {
 
@@ -195,7 +196,6 @@ namespace PryAriettiIEFI
 
         }
 
-
         public void AgregarCliente()
         {
             try
@@ -233,7 +233,6 @@ namespace PryAriettiIEFI
 
         }
 
-
         public void EliminarCliente(string DNI)
         {
             try
@@ -267,7 +266,6 @@ namespace PryAriettiIEFI
                 //throw;
             }
         }
-
 
         public void ModificarCliente(string DNI)
         {
@@ -379,9 +377,10 @@ namespace PryAriettiIEFI
             QueQuieroTraerDeLaBD.CommandText = TablaGIMNASIO;
             // Ejecuta la instuccion 
             OleDbDataReader Leer = QueQuieroTraerDeLaBD.ExecuteReader();
+            //Limpia la Grilla
             DgvListarClientes.Rows.Clear();
             
-
+            // Pregunta si Hay filas para leer 
             if (Leer.HasRows)
             {
                 while (Leer.Read())
@@ -389,6 +388,7 @@ namespace PryAriettiIEFI
                     if (Leer.GetInt32(4) == CodActividad)
                     {
                         DgvListarClientes.Rows.Add(Leer.GetString(0), Leer.GetString(1), Leer.GetString(2), Leer.GetInt32(5));
+
                         Saldo = Saldo + Leer.GetInt32(5);
 
                         if (Leer.GetInt32(5) > Mayor)
@@ -447,7 +447,7 @@ namespace PryAriettiIEFI
 
         public void Imprimir(PrintPageEventArgs Reporte)
         {
-            // Creacion de Objeto Font Para poder Elejir un tipo de letra 
+            // Creacion de Objeto Font Para poder Elejir el tipo de letra 
             System.Drawing.Font TituloPrincipal = new System.Drawing.Font("Arial", 20);
             System.Drawing.Font SubTitulo = new System.Drawing.Font("Arial", 15);
             System.Drawing.Font TipoLetra = new System.Drawing.Font("Arial", 10);
@@ -456,7 +456,7 @@ namespace PryAriettiIEFI
             Reporte.Graphics.DrawString("Listado de Clientes", TituloPrincipal, Brushes.Black, 100,100);
             Reporte.Graphics.DrawString("DNI", SubTitulo, Brushes.Black, 100, 170);
             Reporte.Graphics.DrawString("Nombres", SubTitulo, Brushes.Black, 200, 170);
-            Reporte.Graphics.DrawString("Saldo", SubTitulo, Brushes.Black, 300, 170);
+            Reporte.Graphics.DrawString("Saldo", SubTitulo, Brushes.Black, 320, 170);
 
 
             int Linea = 215;
@@ -490,7 +490,8 @@ namespace PryAriettiIEFI
                     // Imprimo Los campos elegidos de la BD
                     Reporte.Graphics.DrawString(Fila["Dni Socio"].ToString(),TipoLetra,Brushes.Black,100,Linea);
                     Reporte.Graphics.DrawString(Fila["Nombre"].ToString(), TipoLetra, Brushes.Black, 200,Linea);
-                    Reporte.Graphics.DrawString(Fila["Saldo"].ToString(), TipoLetra, Brushes.Black, 300, Linea);
+                    Reporte.Graphics.DrawString(Fila["Saldo"].ToString(), TipoLetra, Brushes.Black, 320, Linea);
+
                     //Incremento la variable Linea para que cuando se impriman los datos Salgan con espacios en la Hoja.
                     Linea = Linea + 25;
                 }

@@ -48,25 +48,31 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // SsListarClientes
             // 
-            this.SsListarClientes.Location = new System.Drawing.Point(0, 264);
+            this.SsListarClientes.Location = new System.Drawing.Point(0, 261);
             this.SsListarClientes.Name = "SsListarClientes";
-            this.SsListarClientes.Size = new System.Drawing.Size(868, 22);
+            this.SsListarClientes.Size = new System.Drawing.Size(893, 22);
             this.SsListarClientes.TabIndex = 21;
             this.SsListarClientes.Text = "statusStrip1";
             // 
             // cmdListar
             // 
-            this.cmdListar.Location = new System.Drawing.Point(116, 214);
+            this.cmdListar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmdListar.FlatAppearance.BorderSize = 0;
+            this.cmdListar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdListar.Location = new System.Drawing.Point(0, 0);
             this.cmdListar.Name = "cmdListar";
-            this.cmdListar.Size = new System.Drawing.Size(95, 27);
+            this.cmdListar.Size = new System.Drawing.Size(214, 41);
             this.cmdListar.TabIndex = 20;
             this.cmdListar.Text = "Listar";
             this.cmdListar.UseVisualStyleBackColor = true;
@@ -193,9 +199,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lblPromedio);
-            this.panel1.Controls.Add(this.cmdListar);
             this.panel1.Controls.Add(this.txtTotalClientes);
             this.panel1.Controls.Add(this.txtPromedioSaldos);
             this.panel1.Controls.Add(this.lblTotalClientes);
@@ -205,7 +211,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 264);
+            this.panel1.Size = new System.Drawing.Size(214, 261);
             this.panel1.TabIndex = 35;
             // 
             // panel2
@@ -228,11 +234,19 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.cmdListar);
+            this.panel3.Location = new System.Drawing.Point(0, 213);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(214, 41);
+            this.panel3.TabIndex = 36;
+            // 
             // FrmListarClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 286);
+            this.ClientSize = new System.Drawing.Size(893, 283);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SsListarClientes);
             this.Controls.Add(this.dgvMostrar);
@@ -246,6 +260,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +287,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeuda;
+        private System.Windows.Forms.Panel panel3;
     }
 }

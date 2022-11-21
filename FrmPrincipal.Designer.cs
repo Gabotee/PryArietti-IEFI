@@ -32,12 +32,12 @@
             this.PanelPrincipal = new System.Windows.Forms.Panel();
             this.SsPrincipal = new System.Windows.Forms.StatusStrip();
             this.PanelSubMenu = new System.Windows.Forms.Panel();
+            this.cmdModificar = new System.Windows.Forms.Button();
             this.cmdConsultaPorCliente = new System.Windows.Forms.Button();
-            this.cmdConsultaPorActividad = new System.Windows.Forms.Button();
+            this.cmdRegistrar = new System.Windows.Forms.Button();
             this.cmdListarClientes = new System.Windows.Forms.Button();
             this.cmdBuscarPorBarrio = new System.Windows.Forms.Button();
-            this.cmdModificar = new System.Windows.Forms.Button();
-            this.cmdRegistrar = new System.Windows.Forms.Button();
+            this.cmdConsultaPorActividad = new System.Windows.Forms.Button();
             this.cmdClientes = new System.Windows.Forms.Button();
             this.PanelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,12 +58,12 @@
             this.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.PanelPrincipal.Name = "PanelPrincipal";
-            this.PanelPrincipal.Size = new System.Drawing.Size(200, 488);
+            this.PanelPrincipal.Size = new System.Drawing.Size(200, 487);
             this.PanelPrincipal.TabIndex = 0;
             // 
             // SsPrincipal
             // 
-            this.SsPrincipal.Location = new System.Drawing.Point(0, 466);
+            this.SsPrincipal.Location = new System.Drawing.Point(0, 465);
             this.SsPrincipal.Name = "SsPrincipal";
             this.SsPrincipal.Size = new System.Drawing.Size(200, 22);
             this.SsPrincipal.TabIndex = 2;
@@ -71,25 +71,39 @@
             // PanelSubMenu
             // 
             this.PanelSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.PanelSubMenu.Controls.Add(this.cmdModificar);
             this.PanelSubMenu.Controls.Add(this.cmdConsultaPorCliente);
-            this.PanelSubMenu.Controls.Add(this.cmdConsultaPorActividad);
+            this.PanelSubMenu.Controls.Add(this.cmdRegistrar);
             this.PanelSubMenu.Controls.Add(this.cmdListarClientes);
             this.PanelSubMenu.Controls.Add(this.cmdBuscarPorBarrio);
-            this.PanelSubMenu.Controls.Add(this.cmdModificar);
-            this.PanelSubMenu.Controls.Add(this.cmdRegistrar);
+            this.PanelSubMenu.Controls.Add(this.cmdConsultaPorActividad);
             this.PanelSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelSubMenu.Location = new System.Drawing.Point(0, 145);
             this.PanelSubMenu.Name = "PanelSubMenu";
-            this.PanelSubMenu.Size = new System.Drawing.Size(200, 289);
+            this.PanelSubMenu.Size = new System.Drawing.Size(200, 307);
             this.PanelSubMenu.TabIndex = 1;
+            // 
+            // cmdModificar
+            // 
+            this.cmdModificar.FlatAppearance.BorderSize = 0;
+            this.cmdModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdModificar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cmdModificar.Location = new System.Drawing.Point(-3, 51);
+            this.cmdModificar.Name = "cmdModificar";
+            this.cmdModificar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.cmdModificar.Size = new System.Drawing.Size(200, 45);
+            this.cmdModificar.TabIndex = 2;
+            this.cmdModificar.Text = "Modificar";
+            this.cmdModificar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdModificar.UseVisualStyleBackColor = true;
+            this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
             // 
             // cmdConsultaPorCliente
             // 
-            this.cmdConsultaPorCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmdConsultaPorCliente.FlatAppearance.BorderSize = 0;
             this.cmdConsultaPorCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdConsultaPorCliente.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdConsultaPorCliente.Location = new System.Drawing.Point(0, 225);
+            this.cmdConsultaPorCliente.Location = new System.Drawing.Point(-3, 255);
             this.cmdConsultaPorCliente.Name = "cmdConsultaPorCliente";
             this.cmdConsultaPorCliente.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.cmdConsultaPorCliente.Size = new System.Drawing.Size(200, 45);
@@ -99,29 +113,27 @@
             this.cmdConsultaPorCliente.UseVisualStyleBackColor = true;
             this.cmdConsultaPorCliente.Click += new System.EventHandler(this.cmdConsultaPorCliente_Click);
             // 
-            // cmdConsultaPorActividad
+            // cmdRegistrar
             // 
-            this.cmdConsultaPorActividad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cmdConsultaPorActividad.FlatAppearance.BorderSize = 0;
-            this.cmdConsultaPorActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdConsultaPorActividad.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdConsultaPorActividad.Location = new System.Drawing.Point(0, 180);
-            this.cmdConsultaPorActividad.Name = "cmdConsultaPorActividad";
-            this.cmdConsultaPorActividad.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.cmdConsultaPorActividad.Size = new System.Drawing.Size(200, 45);
-            this.cmdConsultaPorActividad.TabIndex = 5;
-            this.cmdConsultaPorActividad.Text = "Consulta Por Actividad";
-            this.cmdConsultaPorActividad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdConsultaPorActividad.UseVisualStyleBackColor = true;
-            this.cmdConsultaPorActividad.Click += new System.EventHandler(this.cmdConsultaPorActividad_Click);
+            this.cmdRegistrar.FlatAppearance.BorderSize = 0;
+            this.cmdRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdRegistrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cmdRegistrar.Location = new System.Drawing.Point(-3, 0);
+            this.cmdRegistrar.Name = "cmdRegistrar";
+            this.cmdRegistrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.cmdRegistrar.Size = new System.Drawing.Size(200, 45);
+            this.cmdRegistrar.TabIndex = 1;
+            this.cmdRegistrar.Text = "Registrar";
+            this.cmdRegistrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdRegistrar.UseVisualStyleBackColor = true;
+            this.cmdRegistrar.Click += new System.EventHandler(this.cmdRegistrar_Click);
             // 
             // cmdListarClientes
             // 
-            this.cmdListarClientes.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmdListarClientes.FlatAppearance.BorderSize = 0;
             this.cmdListarClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdListarClientes.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdListarClientes.Location = new System.Drawing.Point(0, 135);
+            this.cmdListarClientes.Location = new System.Drawing.Point(-3, 102);
             this.cmdListarClientes.Name = "cmdListarClientes";
             this.cmdListarClientes.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.cmdListarClientes.Size = new System.Drawing.Size(200, 45);
@@ -133,11 +145,10 @@
             // 
             // cmdBuscarPorBarrio
             // 
-            this.cmdBuscarPorBarrio.Dock = System.Windows.Forms.DockStyle.Top;
             this.cmdBuscarPorBarrio.FlatAppearance.BorderSize = 0;
             this.cmdBuscarPorBarrio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdBuscarPorBarrio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdBuscarPorBarrio.Location = new System.Drawing.Point(0, 90);
+            this.cmdBuscarPorBarrio.Location = new System.Drawing.Point(-3, 204);
             this.cmdBuscarPorBarrio.Name = "cmdBuscarPorBarrio";
             this.cmdBuscarPorBarrio.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.cmdBuscarPorBarrio.Size = new System.Drawing.Size(200, 45);
@@ -147,37 +158,20 @@
             this.cmdBuscarPorBarrio.UseVisualStyleBackColor = true;
             this.cmdBuscarPorBarrio.Click += new System.EventHandler(this.cmdBuscarPorBarrio_Click);
             // 
-            // cmdModificar
+            // cmdConsultaPorActividad
             // 
-            this.cmdModificar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cmdModificar.FlatAppearance.BorderSize = 0;
-            this.cmdModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdModificar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdModificar.Location = new System.Drawing.Point(0, 45);
-            this.cmdModificar.Name = "cmdModificar";
-            this.cmdModificar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.cmdModificar.Size = new System.Drawing.Size(200, 45);
-            this.cmdModificar.TabIndex = 2;
-            this.cmdModificar.Text = "Modificar";
-            this.cmdModificar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdModificar.UseVisualStyleBackColor = true;
-            this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
-            // 
-            // cmdRegistrar
-            // 
-            this.cmdRegistrar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cmdRegistrar.FlatAppearance.BorderSize = 0;
-            this.cmdRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdRegistrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.cmdRegistrar.Location = new System.Drawing.Point(0, 0);
-            this.cmdRegistrar.Name = "cmdRegistrar";
-            this.cmdRegistrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.cmdRegistrar.Size = new System.Drawing.Size(200, 45);
-            this.cmdRegistrar.TabIndex = 1;
-            this.cmdRegistrar.Text = "Registrar";
-            this.cmdRegistrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdRegistrar.UseVisualStyleBackColor = true;
-            this.cmdRegistrar.Click += new System.EventHandler(this.cmdRegistrar_Click);
+            this.cmdConsultaPorActividad.FlatAppearance.BorderSize = 0;
+            this.cmdConsultaPorActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdConsultaPorActividad.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cmdConsultaPorActividad.Location = new System.Drawing.Point(-3, 153);
+            this.cmdConsultaPorActividad.Name = "cmdConsultaPorActividad";
+            this.cmdConsultaPorActividad.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.cmdConsultaPorActividad.Size = new System.Drawing.Size(200, 45);
+            this.cmdConsultaPorActividad.TabIndex = 5;
+            this.cmdConsultaPorActividad.Text = "Consulta Por Actividad";
+            this.cmdConsultaPorActividad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdConsultaPorActividad.UseVisualStyleBackColor = true;
+            this.cmdConsultaPorActividad.Click += new System.EventHandler(this.cmdConsultaPorActividad_Click);
             // 
             // cmdClientes
             // 
@@ -231,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(631, 488);
+            this.ClientSize = new System.Drawing.Size(629, 487);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.PanelPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

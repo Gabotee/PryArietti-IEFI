@@ -44,25 +44,32 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBarrioo = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.panelBoton = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelBoton.SuspendLayout();
             this.SuspendLayout();
             // 
             // SsMismoBarrio
             // 
-            this.SsMismoBarrio.Location = new System.Drawing.Point(0, 295);
+            this.SsMismoBarrio.Location = new System.Drawing.Point(0, 315);
             this.SsMismoBarrio.Name = "SsMismoBarrio";
-            this.SsMismoBarrio.Size = new System.Drawing.Size(672, 22);
+            this.SsMismoBarrio.Size = new System.Drawing.Size(696, 22);
             this.SsMismoBarrio.TabIndex = 17;
             this.SsMismoBarrio.Text = "statusStrip1";
             // 
             // cmdListar
             // 
-            this.cmdListar.Location = new System.Drawing.Point(108, 237);
+            this.cmdListar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cmdListar.Enabled = false;
+            this.cmdListar.FlatAppearance.BorderSize = 0;
+            this.cmdListar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdListar.Location = new System.Drawing.Point(0, 0);
             this.cmdListar.Name = "cmdListar";
-            this.cmdListar.Size = new System.Drawing.Size(95, 27);
+            this.cmdListar.Size = new System.Drawing.Size(211, 45);
             this.cmdListar.TabIndex = 16;
             this.cmdListar.Text = "Listar";
             this.cmdListar.UseVisualStyleBackColor = true;
@@ -83,6 +90,7 @@
             this.lstBarrio.Name = "lstBarrio";
             this.lstBarrio.Size = new System.Drawing.Size(194, 21);
             this.lstBarrio.TabIndex = 15;
+            this.lstBarrio.SelectedIndexChanged += new System.EventHandler(this.lstBarrio_SelectedIndexChanged);
             // 
             // dgvMostrar
             // 
@@ -146,16 +154,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.Controls.Add(this.panelBoton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lblBarrioo);
             this.panel1.Controls.Add(this.lblMensaje);
-            this.panel1.Controls.Add(this.cmdListar);
             this.panel1.Controls.Add(this.lstBarrio);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 295);
+            this.panel1.Size = new System.Drawing.Size(214, 315);
             this.panel1.TabIndex = 32;
             // 
             // panel2
@@ -198,11 +206,19 @@
             this.lblMensaje.TabIndex = 15;
             this.lblMensaje.Text = "Porfavor seleccione un\r\nBarrio.\r\n\r\n\r\n";
             // 
+            // panelBoton
+            // 
+            this.panelBoton.Controls.Add(this.cmdListar);
+            this.panelBoton.Location = new System.Drawing.Point(3, 256);
+            this.panelBoton.Name = "panelBoton";
+            this.panelBoton.Size = new System.Drawing.Size(211, 75);
+            this.panelBoton.TabIndex = 33;
+            // 
             // FrmBusquedaPorBarrio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 317);
+            this.ClientSize = new System.Drawing.Size(696, 337);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblBarrio);
             this.Controls.Add(this.SsMismoBarrio);
@@ -217,6 +233,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelBoton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,5 +256,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre_Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeuda;
+        private System.Windows.Forms.Panel panelBoton;
     }
 }

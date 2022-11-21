@@ -61,8 +61,8 @@ namespace PryAriettiIEFI
 
                 cliente.NombreCliente = txtNombre.Text;
                 cliente.Direccion = txtDireccion.Text;
-                cliente.Barrio = Convert.ToInt32(lstBarrio.SelectedValue);
-                cliente.Actividad = Convert.ToInt32(lstActividad.SelectedValue);
+                cliente.Barrio = Convert.ToInt32(lstBarrio.SelectedIndex);
+                cliente.Actividad = Convert.ToInt32(lstActividad.SelectedIndex);
                 cliente.Saldo = Convert.ToInt32(txtSaldo.Text);
 
                 cliente.ModificarCliente(DNI);

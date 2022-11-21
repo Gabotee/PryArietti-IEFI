@@ -57,5 +57,17 @@ namespace PryAriettiIEFI
             ClaseCliente Listar = new ClaseCliente();
             Listar.ListarClienteBarrio(dgvMostrar,CodigoBarrio);
         }
+
+        private void lstBarrio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstBarrio.SelectedIndex == -1)
+            {
+                cmdListar.Enabled = false;
+            }
+            else
+            {
+                cmdListar.Enabled = true;
+            }
+        }
     }
 }
