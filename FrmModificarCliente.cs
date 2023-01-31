@@ -63,7 +63,11 @@ namespace PryAriettiIEFI
                 cliente.Direccion = txtDireccion.Text;
                 cliente.Barrio = Convert.ToInt32(lstBarrio.SelectedIndex);
                 cliente.Actividad = Convert.ToInt32(lstActividad.SelectedIndex);
-                cliente.Saldo = Convert.ToInt32(txtSaldo.Text);
+                cliente.Mensualidad = Convert.ToInt32(txtSaldo.Text);
+                cliente.Telefono = Convert.ToInt32(txtTelefono.Text);
+                cliente.Email = txtEmail.Text;
+                cliente.FechaInscripcion = dtpInscipcion.Text;
+                cliente.Sexo = lstSexo.Text;
 
                 cliente.ModificarCliente(DNI);
 
@@ -83,6 +87,9 @@ namespace PryAriettiIEFI
             lstBarrio.SelectedIndex = -1;
             lstActividad.SelectedIndex = -1;
             txtSaldo.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            lstSexo.SelectedIndex = -1;
         }
 
         private void cmdBuscar_Click(object sender, EventArgs e)
@@ -117,7 +124,15 @@ namespace PryAriettiIEFI
                         ClaseActividad Actividad = new ClaseActividad();
                         lstActividad.Text = Actividad.Buscar(Cliente.Actividad);
 
-                        txtSaldo.Text = Convert.ToString(Cliente.Saldo);
+                        txtSaldo.Text = Convert.ToString(Cliente.Mensualidad);
+
+                        txtTelefono.Text = Convert.ToString(Cliente.Telefono);
+
+                        txtEmail.Text = Convert.ToString(Cliente.Email);
+
+                        dtpInscipcion.Text = Cliente.FechaInscripcion;
+
+                        lstSexo.SelectedIndex = Convert.ToInt32(Cliente.Sexo);
                     }
                 }
                
@@ -147,6 +162,10 @@ namespace PryAriettiIEFI
             lstBarrio.Enabled = true;
             lstActividad.Enabled = true;
             txtSaldo.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtEmail.Enabled = true;
+            dtpInscipcion.Enabled = true;
+            lstSexo.Enabled = true;
 
             txtNombre.Focus();
         }
@@ -185,6 +204,17 @@ namespace PryAriettiIEFI
         }
 
         private void txtSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClaseValidacion Validar = new ClaseValidacion();
+            Validar.SoloNumeros(e);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             ClaseValidacion Validar = new ClaseValidacion();
             Validar.SoloNumeros(e);

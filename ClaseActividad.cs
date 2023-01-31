@@ -50,10 +50,11 @@ namespace PryAriettiIEFI
                 QueQuieroTraerDeLaBD.CommandText = TablaActividad;
                 // Creo un adaptador y le paso la tabla 
                 Adaptador = new OleDbDataAdapter(QueQuieroTraerDeLaBD);
+                //Creo Objeto de DataSet 
                 DataSet DS = new DataSet();
                 // Le paso las filas de la base de datos de la tabla actividad 
                 Adaptador.Fill(DS, TablaActividad);
-                //
+                //Establec el origen de datos 
                 combo.DataSource = DS.Tables[TablaActividad];
                 // Le paso el nombre de las actividades 
                 combo.DisplayMember = "Nombre Actividad";
@@ -109,11 +110,6 @@ namespace PryAriettiIEFI
                 return e.ToString();
             }
         }
-
-
-
-
-
 
     }
 }

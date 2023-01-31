@@ -49,7 +49,7 @@ namespace PryAriettiIEFI
             Clientes.ListarClientes(dgvMostrar);
 
             txtTotalClientes.Text = Clientes.Cliente.ToString();
-            txtTotalSaldos.Text = Clientes.Saldo.ToString();
+            txtTotalSaldos.Text = Clientes.Mensualidad.ToString();
             txtPromedioSaldos.Text = Clientes.Promedio.ToString();
         }
     }

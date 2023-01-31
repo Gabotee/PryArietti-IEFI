@@ -75,7 +75,7 @@ namespace PryAriettiIEFI
                         ClaseActividad Actividad = new ClaseActividad();
                         lstActividad.Text = Actividad.Buscar(Cliente.Actividad);
 
-                        txtSaldo.Text = Convert.ToString(Cliente.Saldo);
+                        txtSaldo.Text = Convert.ToString(Cliente.Mensualidad);
                     }
                 }
 

@@ -32,12 +32,6 @@
             this.SsListarClientes = new System.Windows.Forms.StatusStrip();
             this.cmdListar = new System.Windows.Forms.Button();
             this.dgvMostrar = new System.Windows.Forms.DataGridView();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDatos = new System.Windows.Forms.Label();
             this.lblTotalClientes = new System.Windows.Forms.Label();
             this.txtTotalClientes = new System.Windows.Forms.TextBox();
@@ -46,14 +40,20 @@
             this.lblPromedio = new System.Windows.Forms.Label();
             this.txtPromedioSaldos = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // SsListarClientes
@@ -95,42 +95,6 @@
             this.dgvMostrar.ReadOnly = true;
             this.dgvMostrar.Size = new System.Drawing.Size(644, 217);
             this.dgvMostrar.TabIndex = 19;
-            // 
-            // ColumnCodigo
-            // 
-            this.ColumnCodigo.HeaderText = "DNI";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            this.ColumnCodigo.ReadOnly = true;
-            // 
-            // ColumnNombre_Apellido
-            // 
-            this.ColumnNombre_Apellido.HeaderText = "Nombre y Apellido";
-            this.ColumnNombre_Apellido.Name = "ColumnNombre_Apellido";
-            this.ColumnNombre_Apellido.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Direccion";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Barrio";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Actividad";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // ColumnDeuda
-            // 
-            this.ColumnDeuda.HeaderText = "Saldo";
-            this.ColumnDeuda.Name = "ColumnDeuda";
-            this.ColumnDeuda.ReadOnly = true;
             // 
             // lblDatos
             // 
@@ -214,6 +178,14 @@
             this.panel1.Size = new System.Drawing.Size(214, 261);
             this.panel1.TabIndex = 35;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.cmdListar);
+            this.panel3.Location = new System.Drawing.Point(0, 213);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(214, 41);
+            this.panel3.TabIndex = 36;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox1);
@@ -234,13 +206,41 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
-            // panel3
+            // ColumnCodigo
             // 
-            this.panel3.Controls.Add(this.cmdListar);
-            this.panel3.Location = new System.Drawing.Point(0, 213);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(214, 41);
-            this.panel3.TabIndex = 36;
+            this.ColumnCodigo.HeaderText = "DNI";
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            this.ColumnCodigo.ReadOnly = true;
+            // 
+            // ColumnNombre_Apellido
+            // 
+            this.ColumnNombre_Apellido.HeaderText = "Nombre y Apellido";
+            this.ColumnNombre_Apellido.Name = "ColumnNombre_Apellido";
+            this.ColumnNombre_Apellido.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Direccion";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Barrio";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Actividad";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // ColumnDeuda
+            // 
+            this.ColumnDeuda.HeaderText = "Mensualidad";
+            this.ColumnDeuda.Name = "ColumnDeuda";
+            this.ColumnDeuda.ReadOnly = true;
             // 
             // FrmListarClientes
             // 
@@ -258,9 +258,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,12 +281,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre_Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeuda;
-        private System.Windows.Forms.Panel panel3;
     }
 }

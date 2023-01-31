@@ -34,10 +34,6 @@
             this.cmdListar = new System.Windows.Forms.Button();
             this.lstActividad = new System.Windows.Forms.ComboBox();
             this.dgvMostrar = new System.Windows.Forms.DataGridView();
-            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDatos = new System.Windows.Forms.Label();
             this.lblMayorPromedio = new System.Windows.Forms.Label();
             this.txtMayorPromedio = new System.Windows.Forms.TextBox();
@@ -54,6 +50,10 @@
             this.lblMensaje = new System.Windows.Forms.Label();
             this.ImpVentana = new System.Windows.Forms.PrintDialog();
             this.ImpDocumento = new System.Drawing.Printing.PrintDocument();
+            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
             this.PanelBotones.SuspendLayout();
@@ -127,31 +127,6 @@
             this.dgvMostrar.ReadOnly = true;
             this.dgvMostrar.Size = new System.Drawing.Size(543, 266);
             this.dgvMostrar.TabIndex = 20;
-            // 
-            // DNI
-            // 
-            this.DNI.HeaderText = "DNI";
-            this.DNI.Name = "DNI";
-            this.DNI.ReadOnly = true;
-            // 
-            // Nombre_Apellido
-            // 
-            this.Nombre_Apellido.HeaderText = "Nombre y Apellido";
-            this.Nombre_Apellido.Name = "Nombre_Apellido";
-            this.Nombre_Apellido.ReadOnly = true;
-            this.Nombre_Apellido.Width = 200;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Saldo
-            // 
-            this.Saldo.HeaderText = "Saldo";
-            this.Saldo.Name = "Saldo";
-            this.Saldo.ReadOnly = true;
             // 
             // lblDatos
             // 
@@ -310,6 +285,31 @@
             // 
             this.ImpDocumento.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.ImpDocumento_PrintPage);
             // 
+            // DNI
+            // 
+            this.DNI.HeaderText = "DNI";
+            this.DNI.Name = "DNI";
+            this.DNI.ReadOnly = true;
+            // 
+            // Nombre_Apellido
+            // 
+            this.Nombre_Apellido.HeaderText = "Nombre y Apellido";
+            this.Nombre_Apellido.Name = "Nombre_Apellido";
+            this.Nombre_Apellido.ReadOnly = true;
+            this.Nombre_Apellido.Width = 200;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Saldo
+            // 
+            this.Saldo.HeaderText = "Mensualidad";
+            this.Saldo.Name = "Saldo";
+            this.Saldo.ReadOnly = true;
+            // 
             // FrmBusquedaPorActividad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,12 +360,12 @@
         private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.Button cmdReporte;
         private System.Windows.Forms.Button cmdImprimir;
+        private System.Windows.Forms.PrintDialog ImpVentana;
+        private System.Drawing.Printing.PrintDocument ImpDocumento;
+        private System.Windows.Forms.Panel PanelBotones;
         private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Saldo;
-        private System.Windows.Forms.PrintDialog ImpVentana;
-        private System.Drawing.Printing.PrintDocument ImpDocumento;
-        private System.Windows.Forms.Panel PanelBotones;
     }
 }

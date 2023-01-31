@@ -61,7 +61,7 @@ namespace PryAriettiIEFI
 
             Listar.ListarClienteActividad(dgvMostrar, NumeroActividad);
 
-            txtTotalSaldo.Text = Listar.Saldo.ToString();
+            txtTotalSaldo.Text = Listar.Mensualidad.ToString();
             txtMayorPromedio.Text = Listar.Mayor.ToString();
             txtMenorPromedio.Text = Listar.Menor.ToString();
 

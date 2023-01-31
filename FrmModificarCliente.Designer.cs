@@ -47,14 +47,22 @@
             this.lblBarrio = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpInscipcion = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstSexo = new System.Windows.Forms.ComboBox();
             this.mrcDatosCliente.SuspendLayout();
             this.SuspendLayout();
             // 
             // SsBuscar
             // 
-            this.SsBuscar.Location = new System.Drawing.Point(0, 284);
+            this.SsBuscar.Location = new System.Drawing.Point(0, 394);
             this.SsBuscar.Name = "SsBuscar";
-            this.SsBuscar.Size = new System.Drawing.Size(389, 22);
+            this.SsBuscar.Size = new System.Drawing.Size(438, 22);
             this.SsBuscar.TabIndex = 14;
             this.SsBuscar.Text = "statusStrip1";
             // 
@@ -87,6 +95,14 @@
             // 
             // mrcDatosCliente
             // 
+            this.mrcDatosCliente.Controls.Add(this.lstSexo);
+            this.mrcDatosCliente.Controls.Add(this.label4);
+            this.mrcDatosCliente.Controls.Add(this.label3);
+            this.mrcDatosCliente.Controls.Add(this.dtpInscipcion);
+            this.mrcDatosCliente.Controls.Add(this.txtEmail);
+            this.mrcDatosCliente.Controls.Add(this.label2);
+            this.mrcDatosCliente.Controls.Add(this.txtTelefono);
+            this.mrcDatosCliente.Controls.Add(this.label1);
             this.mrcDatosCliente.Controls.Add(this.lstBarrio);
             this.mrcDatosCliente.Controls.Add(this.lstActividad);
             this.mrcDatosCliente.Controls.Add(this.txtSaldo);
@@ -100,9 +116,9 @@
             this.mrcDatosCliente.Controls.Add(this.lblBarrio);
             this.mrcDatosCliente.Controls.Add(this.lblDireccion);
             this.mrcDatosCliente.Controls.Add(this.lblNombre);
-            this.mrcDatosCliente.Location = new System.Drawing.Point(3, 63);
+            this.mrcDatosCliente.Location = new System.Drawing.Point(12, 63);
             this.mrcDatosCliente.Name = "mrcDatosCliente";
-            this.mrcDatosCliente.Size = new System.Drawing.Size(367, 201);
+            this.mrcDatosCliente.Size = new System.Drawing.Size(396, 321);
             this.mrcDatosCliente.TabIndex = 10;
             this.mrcDatosCliente.TabStop = false;
             this.mrcDatosCliente.Text = "Datos";
@@ -156,9 +172,9 @@
             this.lblSaldo.AutoSize = true;
             this.lblSaldo.Location = new System.Drawing.Point(21, 134);
             this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(34, 13);
+            this.lblSaldo.Size = new System.Drawing.Size(67, 13);
             this.lblSaldo.TabIndex = 13;
-            this.lblSaldo.Text = "Saldo";
+            this.lblSaldo.Text = "Mensualidad";
             // 
             // lblActividad
             // 
@@ -171,7 +187,7 @@
             // 
             // cmdModificar
             // 
-            this.cmdModificar.Location = new System.Drawing.Point(150, 173);
+            this.cmdModificar.Location = new System.Drawing.Point(165, 283);
             this.cmdModificar.Name = "cmdModificar";
             this.cmdModificar.Size = new System.Drawing.Size(75, 22);
             this.cmdModificar.TabIndex = 10;
@@ -181,7 +197,7 @@
             // 
             // cmdEliminar
             // 
-            this.cmdEliminar.Location = new System.Drawing.Point(45, 173);
+            this.cmdEliminar.Location = new System.Drawing.Point(60, 283);
             this.cmdEliminar.Name = "cmdEliminar";
             this.cmdEliminar.Size = new System.Drawing.Size(75, 22);
             this.cmdEliminar.TabIndex = 9;
@@ -191,7 +207,7 @@
             // 
             // cmdGuardar
             // 
-            this.cmdGuardar.Location = new System.Drawing.Point(255, 173);
+            this.cmdGuardar.Location = new System.Drawing.Point(270, 283);
             this.cmdGuardar.Name = "cmdGuardar";
             this.cmdGuardar.Size = new System.Drawing.Size(75, 22);
             this.cmdGuardar.TabIndex = 7;
@@ -246,11 +262,86 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre";
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Enabled = false;
+            this.txtTelefono.Location = new System.Drawing.Point(191, 160);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(107, 20);
+            this.txtTelefono.TabIndex = 18;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 160);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Telefono";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Enabled = false;
+            this.txtEmail.Location = new System.Drawing.Point(191, 186);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(107, 20);
+            this.txtEmail.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 186);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Email";
+            // 
+            // dtpInscipcion
+            // 
+            this.dtpInscipcion.Enabled = false;
+            this.dtpInscipcion.Location = new System.Drawing.Point(191, 212);
+            this.dtpInscipcion.Name = "dtpInscipcion";
+            this.dtpInscipcion.Size = new System.Drawing.Size(200, 20);
+            this.dtpInscipcion.TabIndex = 21;
+            this.dtpInscipcion.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 212);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Fecha Inscripcion";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 239);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Sexo";
+            // 
+            // lstSexo
+            // 
+            this.lstSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.lstSexo.Enabled = false;
+            this.lstSexo.FormattingEnabled = true;
+            this.lstSexo.Items.AddRange(new object[] {
+            "Masculino",
+            "Femenino"});
+            this.lstSexo.Location = new System.Drawing.Point(191, 239);
+            this.lstSexo.Name = "lstSexo";
+            this.lstSexo.Size = new System.Drawing.Size(107, 21);
+            this.lstSexo.TabIndex = 24;
+            // 
             // FrmModificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 306);
+            this.ClientSize = new System.Drawing.Size(438, 416);
             this.Controls.Add(this.SsBuscar);
             this.Controls.Add(this.cmdBuscar);
             this.Controls.Add(this.txtDniCliente);
@@ -287,5 +378,13 @@
         private System.Windows.Forms.Label lblBarrio;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.DateTimePicker dtpInscipcion;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox lstSexo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

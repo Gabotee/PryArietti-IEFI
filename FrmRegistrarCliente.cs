@@ -82,7 +82,11 @@ namespace PryAriettiIEFI
                     Registrar.Direccion = txtDireccion.Text;
                     Registrar.Barrio = Convert.ToInt32(lstBarrio.SelectedValue);
                     Registrar.Actividad = Convert.ToInt32(lstActividad.SelectedValue);
-                    Registrar.Saldo = Convert.ToInt32(txtSaldo.Text);
+                    Registrar.Mensualidad = Convert.ToInt32(txtSaldo.Text);
+                    Registrar.Telefono = Convert.ToInt32(txtTelefono.Text);
+                    Registrar.Email = txtEmail.Text;
+                    Registrar.FechaInscripcion = dtpFechaInscripcion.Text;
+                    Registrar.Sexo = Convert.ToString(lstSexo.Text);
                     Registrar.AgregarCliente();
 
                     MessageBox.Show("Cliente Registrado con exito");
@@ -106,6 +110,9 @@ namespace PryAriettiIEFI
             lstBarrio.SelectedIndex = -1;
             lstActividad.SelectedIndex = -1;
             txtSaldo.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            lstSexo.SelectedIndex = -1;
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -135,6 +142,17 @@ namespace PryAriettiIEFI
         {
             ClaseValidacion Validar = new ClaseValidacion();
             Validar.SoloNumeros(e);
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClaseValidacion Validar = new ClaseValidacion();
+            Validar.SoloNumeros(e);
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

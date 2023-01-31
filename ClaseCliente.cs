@@ -31,11 +31,15 @@ namespace PryAriettiIEFI
         private string Dir;
         private int Barr;
         private int Act;
-        private int Sal;
         private int Cli;
         private int Prom;
         private int May;
         private int Men;
+        private int Tel;
+        private string Em;
+        private string FechaInsc;
+        private int Mens;
+        private string Sex;
 
 
         // Toma el Valor de la variable.. y la muestra. 
@@ -64,10 +68,10 @@ namespace PryAriettiIEFI
             get { return Act; }
             set { Act = value; }
         }
-        public int Saldo
+        public int Mensualidad
         {
-            get { return Sal; }
-            set { Sal = value; }
+            get { return Mens; }
+            set { Mens = value; }
         }
 
         public int Cliente
@@ -92,7 +96,28 @@ namespace PryAriettiIEFI
             get {return Men; }
             set { Men = value; }
         }
+        public int Telefono
+        {
+            get { return Tel; }
+            set { Tel = value; }
+        }
+        public string Email
+        {
+            get { return Em; }
+            set { Em = value; }
+        }
+        public string FechaInscripcion
+        {
+            get { return FechaInsc; }
+            set { FechaInsc = value; }
+        }
 
+        public string Sexo
+        {
+            get { return Sex; }
+            set { Sex = value; }
+        }
+       
 
         public void Buscar(string DNI)
         {
@@ -124,12 +149,16 @@ namespace PryAriettiIEFI
                         if (Leer.GetString(0) == DNI)
                         {
                             // Entonces le asigno los datos que lee a las variables 
-                            DNI_Cliente = Leer.GetString(0);
+                            DNI_Cliente = Leer.GetString(0); // GetString.. Obtiene los valores de una columna 
                             Nom_Apellido = Leer.GetString(1);
                             Dir = Leer.GetString(2);
                             Barr = Leer.GetInt32(3);
                             Act = Leer.GetInt32(4);
-                            Sal = Leer.GetInt32(5);
+                            Mens = Leer.GetInt32(5);
+                            Tel = Leer.GetInt32(6);
+                            Em = Leer.GetString(7);
+                            FechaInsc = Convert.ToString(Leer.GetDateTime(8));
+                            Sex = Leer.GetString(9);
                         }
                     }
                 }
@@ -180,7 +209,7 @@ namespace PryAriettiIEFI
                             Dir = Leer.GetString(2);
                             Barr = Leer.GetInt32(3);
                             Act = Leer.GetInt32(4);
-                            Sal = Leer.GetInt32(5);
+                            Mens = Leer.GetInt32(5);
                         }
                     }
                 }
@@ -201,8 +230,8 @@ namespace PryAriettiIEFI
             try
             {
                 //Instruccion para agregar datos a la Bade de Datos 
-                String AgregarCliente = "INSERT INTO" + " GIMNASIO ([DNI SOCIO], [NOMBRE], [DIRECCION], [COD BARRIO], [ACTIVIDAD], [SALDO])" +
-                        " VALUES ('" + DNI + "','" + NombreCliente + "','" + Direccion + "','" + Barrio + "','" + Actividad + "','" + Saldo + "')";
+                String AgregarCliente = "INSERT INTO" + " GIMNASIO ([DNI SOCIO], [NOMBRE], [DIRECCION], [COD BARRIO], [ACTIVIDAD], [MENSUALIDAD], [TELEFONO], [EMAIL], [INSCRIPCION], [SEXO])" +
+                        " VALUES ('" + DNI + "','" + NombreCliente + "','" + Direccion + "','" + Barrio + "','" + Actividad + "','" + Mensualidad + "','" + Telefono + "','" + Email + "','" + FechaInscripcion + "','" + Sexo + "')";
 
                 //Conectarse a la base de datos
                 ConexionBD = new OleDbConnection();
@@ -269,7 +298,8 @@ namespace PryAriettiIEFI
 
         public void ModificarCliente(string DNI)
         {
-            string ModificarCliente = "UPDATE GIMNASIO SET [NOMBRE] = '" + NombreCliente + "',[DIRECCION] = '" + Direccion + "',[Cod Barrio] = '" + Barrio + "',[ACTIVIDAD] ='" + Actividad + "',[SALDO] ='" + Saldo + "' WHERE [Dni Socio] = '" + DNI + "'";
+            string ModificarCliente = "UPDATE GIMNASIO SET [NOMBRE] = '" + NombreCliente + "',[DIRECCION] = '" + Direccion + "',[Cod Barrio] = '" + Barrio + "',[ACTIVIDAD] ='" + Actividad + "',[MENSUALIDAD] ='" + Mensualidad + 
+                "',[TELEFONO] ='" + Telefono + "',[EMAIL] ='" + Email + "',[INSCRIPCION] ='" + FechaInscripcion + "',[SEXO] ='" + Sexo + "' WHERE [Dni Socio] = '" + DNI + "'";
 
             //Me conecto a la base de datos 
             ConexionBD = new OleDbConnection();
@@ -300,13 +330,16 @@ namespace PryAriettiIEFI
             QueQuieroTraerDeLaBD = new OleDbCommand();
             QueQuieroTraerDeLaBD.Connection = ConexionBD;
             QueQuieroTraerDeLaBD.CommandType = System.Data.CommandType.TableDirect;
+
             // Le paso la tabla 
             QueQuieroTraerDeLaBD.CommandText = TablaGIMNASIO;
-            // Ejecuta la instuccion 
+
+            // Creo objeto del datareader para leer La tabla 
             OleDbDataReader Leer = QueQuieroTraerDeLaBD.ExecuteReader();
+
             DgvListarClientes.Rows.Clear();
             Cliente = 0;
-            Saldo = 0;
+            Mensualidad = 0;
             Promedio = 0;
             ClaseActividad Actividad = new ClaseActividad();
             ClaseBarrio Barrio = new ClaseBarrio();
@@ -321,8 +354,8 @@ namespace PryAriettiIEFI
                     NombreActividad = Actividad.Buscar(Leer.GetInt32(4));
                     DgvListarClientes.Rows.Add(Leer.GetString(0), Leer.GetString(1), Leer.GetString(2),NombreBarrio,NombreActividad, Leer.GetInt32(5));
                     Cliente++;
-                    Saldo = Saldo + Leer.GetInt32(5);
-                    Promedio = Saldo / Cliente;
+                    Mensualidad = Mensualidad + Leer.GetInt32(5);
+                    Promedio = Mensualidad / Cliente;
                 }
             }
 
@@ -389,7 +422,7 @@ namespace PryAriettiIEFI
                     {
                         DgvListarClientes.Rows.Add(Leer.GetString(0), Leer.GetString(1), Leer.GetString(2), Leer.GetInt32(5));
 
-                        Saldo = Saldo + Leer.GetInt32(5);
+                        Mensualidad = Mensualidad + Leer.GetInt32(5);
 
                         if (Leer.GetInt32(5) > Mayor)
                         {
@@ -456,7 +489,7 @@ namespace PryAriettiIEFI
             Reporte.Graphics.DrawString("Listado de Clientes", TituloPrincipal, Brushes.Black, 100,100);
             Reporte.Graphics.DrawString("DNI", SubTitulo, Brushes.Black, 100, 170);
             Reporte.Graphics.DrawString("Nombres", SubTitulo, Brushes.Black, 200, 170);
-            Reporte.Graphics.DrawString("Saldo", SubTitulo, Brushes.Black, 320, 170);
+            Reporte.Graphics.DrawString("Mensualidad", SubTitulo, Brushes.Black, 320, 170);
 
 
             int Linea = 215;
@@ -490,10 +523,10 @@ namespace PryAriettiIEFI
                     // Imprimo Los campos elegidos de la BD
                     Reporte.Graphics.DrawString(Fila["Dni Socio"].ToString(),TipoLetra,Brushes.Black,100,Linea);
                     Reporte.Graphics.DrawString(Fila["Nombre"].ToString(), TipoLetra, Brushes.Black, 200,Linea);
-                    Reporte.Graphics.DrawString(Fila["Saldo"].ToString(), TipoLetra, Brushes.Black, 320, Linea);
+                    Reporte.Graphics.DrawString(Fila["Mensualidad"].ToString(), TipoLetra, Brushes.Black, 320, Linea);
 
                     //Incremento la variable Linea para que cuando se impriman los datos Salgan con espacios en la Hoja.
-                    Linea = Linea + 25;
+                    Linea = Linea + 50;
                 }
             }
 

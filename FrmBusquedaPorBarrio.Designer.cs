@@ -33,23 +33,23 @@
             this.cmdListar = new System.Windows.Forms.Button();
             this.lstBarrio = new System.Windows.Forms.ComboBox();
             this.dgvMostrar = new System.Windows.Forms.DataGridView();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDatos = new System.Windows.Forms.Label();
             this.lblBarrio = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelBoton = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBarrioo = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
-            this.panelBoton = new System.Windows.Forms.Panel();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNombre_Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeuda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panelBoton.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelBoton.SuspendLayout();
             this.SuspendLayout();
             // 
             // SsMismoBarrio
@@ -108,30 +108,6 @@
             this.dgvMostrar.Size = new System.Drawing.Size(445, 263);
             this.dgvMostrar.TabIndex = 14;
             // 
-            // ColumnCodigo
-            // 
-            this.ColumnCodigo.HeaderText = "DNI";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            this.ColumnCodigo.ReadOnly = true;
-            // 
-            // ColumnNombre_Apellido
-            // 
-            this.ColumnNombre_Apellido.HeaderText = "Nombre y Apellido";
-            this.ColumnNombre_Apellido.Name = "ColumnNombre_Apellido";
-            this.ColumnNombre_Apellido.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // ColumnDeuda
-            // 
-            this.ColumnDeuda.HeaderText = "Saldo";
-            this.ColumnDeuda.Name = "ColumnDeuda";
-            this.ColumnDeuda.ReadOnly = true;
-            // 
             // lblDatos
             // 
             this.lblDatos.AutoSize = true;
@@ -165,6 +141,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(214, 315);
             this.panel1.TabIndex = 32;
+            // 
+            // panelBoton
+            // 
+            this.panelBoton.Controls.Add(this.cmdListar);
+            this.panelBoton.Location = new System.Drawing.Point(3, 256);
+            this.panelBoton.Name = "panelBoton";
+            this.panelBoton.Size = new System.Drawing.Size(211, 75);
+            this.panelBoton.TabIndex = 33;
             // 
             // panel2
             // 
@@ -206,13 +190,29 @@
             this.lblMensaje.TabIndex = 15;
             this.lblMensaje.Text = "Porfavor seleccione un\r\nBarrio.\r\n\r\n\r\n";
             // 
-            // panelBoton
+            // ColumnCodigo
             // 
-            this.panelBoton.Controls.Add(this.cmdListar);
-            this.panelBoton.Location = new System.Drawing.Point(3, 256);
-            this.panelBoton.Name = "panelBoton";
-            this.panelBoton.Size = new System.Drawing.Size(211, 75);
-            this.panelBoton.TabIndex = 33;
+            this.ColumnCodigo.HeaderText = "DNI";
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            this.ColumnCodigo.ReadOnly = true;
+            // 
+            // ColumnNombre_Apellido
+            // 
+            this.ColumnNombre_Apellido.HeaderText = "Nombre y Apellido";
+            this.ColumnNombre_Apellido.Name = "ColumnNombre_Apellido";
+            this.ColumnNombre_Apellido.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // ColumnDeuda
+            // 
+            this.ColumnDeuda.HeaderText = "Mensualidad";
+            this.ColumnDeuda.Name = "ColumnDeuda";
+            this.ColumnDeuda.ReadOnly = true;
             // 
             // FrmBusquedaPorBarrio
             // 
@@ -231,9 +231,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelBoton.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelBoton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,10 +252,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblBarrioo;
         private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.Panel panelBoton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre_Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeuda;
-        private System.Windows.Forms.Panel panelBoton;
     }
 }
